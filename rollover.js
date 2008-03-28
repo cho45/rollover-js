@@ -1,8 +1,11 @@
+// 'rollover.js#' Copyright (c) 2008 by cho45
+// License: MIT
 
 (function rollover () {
 	var CLASS_NAME = "btn";
 	var SUFFIX     = "_on";
 
+	// script element loaded from
 	var script = document.getElementsByTagName("script");
 	script = script[script.length - 1];
 
