@@ -6,6 +6,9 @@
 	var script = document.getElementsByTagName("script");
 	script = script[script.length - 1];
 
+	// rollover.js#CLASS=button
+	// rollover.js#SUFFIX=_on
+	// rollover.js#CLASS=button,SUFFIX=_on
 	if (script.src.match(/#(.+)/)) {
 		var opts = {};
 		var list = RegExp.$1.split(',');
