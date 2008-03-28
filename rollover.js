@@ -3,6 +3,21 @@
 	var CLASS_NAME = "btn";
 	var SUFFIX     = "_on";
 
+	var script = document.getElementsByTagName("script");
+	script = script[script.length - 1];
+
+	if (script.src.match(/#(.+)/)) {
+		var opts = {};
+		var list = RegExp.$1.split(',');
+		for (var i = 0; i < list.length; i++) {
+			var kv = list[i].split('=');
+			opts[kv[0]] = kv[1];
+		}
+
+		if (opts.CLASS)  CLASS_NAME = opts.CLASS;
+		if (opts.SUFFIX) SUFFIX     = opts.SUFFIX;
+	}
+
 	addEvent(window, "load", function () {
 		var list = document.getElementsByTagName("*");
 		for (var i = 0, len = list.length; i < len; i++) {
@@ -26,7 +41,7 @@
 	});
 
 	function over_src (orig_src) {
-		return orig_src.replace(/\.(gif|jpg|png)/, SUFFIX+'.$1');
+		return orig_src.replace(/\.([^.]+)$/, SUFFIX+'.$1');
 	}
 
 	function addEvent (ele, name, fun) {
